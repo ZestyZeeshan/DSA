@@ -1,0 +1,31 @@
+Reverse A Doubly Linked List
+public class Solution
+{
+    public static Node reverseDLL(Node head)
+    {
+        // Write your code here.
+         Node current=head;
+
+        Node previous=null;
+
+        while(current.next!=null){
+
+            Node nextnode = current.next;
+
+            current.next=previous;
+
+            previous=current;
+
+            current=nextnode;
+
+        }
+
+        //current stops at last node;
+
+        current.next=previous;
+
+        head=current;
+
+        return head;
+    }
+}
