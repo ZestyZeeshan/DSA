@@ -1,0 +1,57 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //2 temporaray nodes bnayenge
+        ListNode temp1=headA;
+        ListNode temp2= headB;
+
+        //count krne ke liye 2no list ki length
+        int countA=0;
+        int countB=0;
+
+        // 2no ko traverse krenge taki length nikal ske
+        while(temp1 != null){
+            countA ++;
+            temp1=temp1.next;
+
+        }
+        while ( temp2 != null){
+            countB ++;
+            temp2=temp2.next;
+        }
+        //2no temp pointers hmare end tak chale gye the so hmm ab unhe starting head tak layenge
+        //gap nikalnege taki differece jitna bi ho use even differenece kr ske.
+        temp1=headA;
+        temp2=headB;
+        if(countA > countB){
+            int gap= countA-countB;
+            for(int i=1;i<= gap;i++){
+               temp1 = temp1.next;
+            }
+        }
+        else{
+            int gap=countB-countA;
+             for(int i=1;i<= gap;i++){
+                temp2 = temp2.next;
+            }
+        }
+        
+         //2no even ho chuke hai means bss traverse krte rho and jbb common mil jaye to return krdo kisi ko bi
+        while(temp1!=temp2){
+            temp1=temp1.next;
+            temp2=temp2.next;
+        }
+        return temp1;
+
+    }
+}
