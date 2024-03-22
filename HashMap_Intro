@@ -1,0 +1,39 @@
+import java.util.*;
+public class OperationInHashMap{
+    public static void HashFunc(){
+        Map<String,Integer> mp=new HashMap<>();
+        //insertion
+        mp.put("zesty",10);
+        mp.put("sham",29);
+        mp.put("tushar",12);
+        mp.put("sam",34);
+        System.out.println(mp);
+        //remove the element
+        System.out.println(mp.remove("sham"));
+        //updation
+        System.out.println(mp.put("tushar",22));
+        System.out.println(mp);
+        //Getting value of a key
+        System.out.println(mp.get("zesty"));
+        //checking if a key is in HashMap
+        System.out.println(mp.containsKey("sam"));
+        //Adding a new entry only if the new key doesnot exist already
+        mp.putIfAbsent("Yash",32);
+        //getting all the keySet
+        System.out.println(mp.keySet());
+        //getting all the values
+        System.out.println(mp.values());
+        //Getting all the entries in the hashmap
+        System.out.println(mp.entrySet());
+        //traversing all the hashmap
+        for(String key : mp.keySet()){
+            System.out.printf("Age of %s is %d\n",key,mp.get(key));
+        }
+        for(var e : mp.entrySet()){
+            System.out.printf("age is %s is %d\n",e.getKey(),e.getValue());
+        }
+    }
+ public static void main(String[] args){
+            HashFunc();
+ }
+} 
