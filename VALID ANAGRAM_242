@@ -1,0 +1,66 @@
+----VALID ANAGRAM---LEETCODE 242
+class Solution {
+   public boolean isAnagram(String s, String t) {
+    //   Map<Character,Integer> st= new HashMap<>();   
+    //    Map<Character,Integer> ts= new HashMap<>(); 
+    //    for(char el: s.toCharArray()){
+    //     if(!st.containsKey(el)){
+    //         st.put (el,1);
+    //     }else{
+    //      st.put(el,st.get(el)+1);
+    //     }
+    //    }  
+    //    for(char el: t.toCharArray()){
+    //     if(!ts.containsKey(el)){
+    //         ts.put (el,1);
+    //     }else{
+    //      ts.put(el,ts.get(el)+1);
+    //     }
+    //    } 
+    //  return st.equals(ts);
+
+    //2nd approach
+
+//     char[] c1=s.toCharArray();
+//     char[] c2= t.toCharArray();
+
+//    Arrays.sort(c1);
+//     Arrays.sort(c2);
+
+//     if(c1.length != c2.length) return false;
+
+//     for(int i=0;i<c1.length;i++){
+//         if(c1[i] != c2[i]) return false;
+      
+//     }
+//       return true;
+
+// we are reducing extra space
+
+  if(s.length() !=t.length()) return false;
+        Map<Character,Integer> st= new HashMap<>();   
+      // Map<Character,Integer> ts= new HashMap<>(); 
+       for(char el: s.toCharArray()){
+        if(!st.containsKey(el)){
+            st.put (el,1);
+        }else{
+         st.put(el,st.get(el)+1);
+        }
+       }  
+     for(int i =0;i<t.length();i++){
+        Character ch = t.charAt(i);
+        if(!st.containsKey(ch)){
+            return false;
+        }else{
+            int curfreq=st.get(ch);
+            st.put(ch,curfreq-1);
+        }
+
+     }
+     for(Integer i : st.values() ){
+        if(i != 0) return false;
+        else return true;
+     }
+     return false;
+    }
+}
